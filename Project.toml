@@ -1,0 +1,11 @@
+name = "ScopedRefValues"
+uuid = "78d2f506-70b9-4f25-a1ae-363495108bc5"
+version = "1.0.0"
+authors = ["Alberto Mengali <disberd@gmail.com>"]
+
+[deps]
+ScopedValues = "7e506255-f358-4e82-b7e4-beb19740aa63"
+
+[compat]
+ScopedValues = "1.3.0"
+julia = "1.10"
