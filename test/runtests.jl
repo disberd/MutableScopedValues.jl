@@ -6,6 +6,7 @@ using TestItemRunner
     # Test constructors
     @test ScopedRefValue{Float64}() isa ScopedRefValue{Float64}
     @test ScopedRefValue{Float64}(3.0) isa ScopedRefValue{Float64}
+    @test ScopedRefValue(3.0) isa ScopedRefValue{Float64}
 
     # Test isassigned 
     @test !isassigned(ScopedRefValue{Function}())
