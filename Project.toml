@@ -1,4 +1,4 @@
-name = "ScopedRefValues"
+name = "MutableScopedValues"
 uuid = "78d2f506-70b9-4f25-a1ae-363495108bc5"
 version = "1.0.0"
 authors = ["Alberto Mengali <disberd@gmail.com>"]

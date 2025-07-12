@@ -1,17 +1,17 @@
 using TestItemRunner
 
-@testitem "ScopedRefValue" begin
+@testitem "MutableScopedValue" begin
     using ScopedValues: ScopedValues, ScopedValue
 
     # Test constructors
-    @test ScopedRefValue{Float64}() isa ScopedRefValue{Float64}
-    @test ScopedRefValue{Float64}(3.0) isa ScopedRefValue{Float64}
-    @test ScopedRefValue(3.0) isa ScopedRefValue{Float64}
+    @test MutableScopedValue{Float64}() isa MutableScopedValue{Float64}
+    @test MutableScopedValue{Float64}(3.0) isa MutableScopedValue{Float64}
+    @test MutableScopedValue(3.0) isa MutableScopedValue{Float64}
 
     # Test isassigned 
-    @test !isassigned(ScopedRefValue{Function}())
+    @test !isassigned(MutableScopedValue{Function}())
 
-    sv = ScopedRefValue{Float64}(3.0)
+    sv = MutableScopedValue{Float64}(3.0)
 
     @test sv[] == 3
 
@@ -21,15 +21,20 @@ using TestItemRunner
     ScopedValues.with(sv => 1.0) do
         @test sv[] === 1.0
     end
-    ScopedRefValues.with(sv => 1.0) do
+    MutableScopedValues.with(sv => 1.0) do
         @test sv[] === 1.0
     end
 
     sc = ScopedValue{Float64}(4.0)
-    ScopedRefValues.with(sc => 1.0, sv => 2.0) do
+    MutableScopedValues.with(sc => 1.0, sv => 2.0) do
         @test sc[] === 1.0
         @test sv[] === 2.0
     end
+end
+
+@testitem "DocTests" begin
+    using Documenter
+    Documenter.doctest(MutableScopedValues; manual = false)
 end
 
 @run_package_tests verbose = true
